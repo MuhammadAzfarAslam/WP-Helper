@@ -1,0 +1,7 @@
+This includes a custom post type with name Advisor.
+This post type includes different meta fields like first_name, last_name, designation, state, phone_number, finra, special etc
+A custom template for grid page
+A custom template for single page
+A search page for only advisor post 
+  ->functions.php
+  ->archive-search.php
