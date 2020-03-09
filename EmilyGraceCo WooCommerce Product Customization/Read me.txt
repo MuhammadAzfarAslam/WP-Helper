@@ -1,0 +1,11 @@
+----- emilygraceco ----
+
+X-store theme
+Worked in X-store child theme
+
+About:
+This include woocommerce customization, user can add different monograms on woocommerce single page and then able to preview it.
+All worked done in functions.php and JQUERY and CSS in footer.php . Both files are in child theme.
+
+functions.php
+footer.php
