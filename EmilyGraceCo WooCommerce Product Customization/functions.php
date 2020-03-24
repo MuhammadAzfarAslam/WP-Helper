@@ -26,60 +26,39 @@ function my_funtion_sample() {
         <br/>
         <label for="fonts">Choose a Font:</label>
 
-        <select id="fonts">
-            <option value="">Choose A Font</option>
-            <option value="aj-jiggy-roman">A&amp;S JIGGY ROMAN</option>
-            <option value="as-snapper-script">A&amp;S SNAPPER SCRIPT</option>
-            <option value="as-graceland">A&amp;S GRACELAND</option>
-            <option value="boingo">BOINGO</option>
-            <option value="frscript">FRSCRIPT</option>
-            <option value="nebraskb">NEBRASKB</option>
-            <option value="heartmid">HEART</option>
-            <option value="interlockingvine">INTER LOCKING VINE</option>
-            <option value="vinemonogram">VINE MONOGRAM</option>
-            <option value="vinesplit">VINE SPLIT</option>
-            <option value="circlemonogram">CIRCLE MONOGRAM</option>
-        </select>
+        <?php
+        $rows = get_field('fonts', 6786); // 6786 is page id
+        if($rows)
+        {
+        	echo '<select id="fonts">';
+        	foreach($rows as $row)
+        	{
+        		$str_arr = explode (",", $row['options']);?>
+    		<option value="<?php print_r($str_arr[0]) ?>"> <?php
+                print_r($str_arr[1]);
+        		echo '</option>';
+        	}
+        	echo '</select>';
+        } ?>
     </div>
 	
 	<div class="form-cus-div">
 	<br/>
-        <label for="fonts">Choose a Font Color:</label>
-	<select id="font-color">
-            <option value="">Choose A Color</option>
-            <option value="#fdd26e">Flesh Tan</option>
-            <option value="#DDCBA4">Khaki </option>
-            <option value="#653819">Chocolate Brown</option>
-            <option value="#946037">Teddy</option>
-            <option value="#4E3629">Dark Brown</option>
-            <option value="#502B3A">Maroon</option>
-            <option value="#6C1D45">Light Maroon</option>
-            <option value="#8A1538">Cardinal </option>
-            <option value="#D22630">Scarlet </option>
-            <option value="#E10098">Rhodamine Red</option>
-            <option value="#FE5000">Orange</option>
-            <option value="#FFBF3F">Light Gold</option>
-            <option value="#FFCD00">Primrose </option>
-            <option value="#FED141">Lemon</option>
-            <option value="#F3D54E">Blazer Gold</option>
-            <option value="#D0C883">Vegas Gold</option>
-            <option value="#97D700">Lime </option>
-            <option value="#009639">Bright Green </option>
-            <option value="#046A38">Kelly  </option>
-            <option value="#284734">Forest  </option>
-            <option value="#40E0D0">Turquoise  </option>
-            <option value="#2AD2C9">Paradise Green </option>
-            <option value="#00b4e4">Light Blue </option>
-            <option value="#0078bf">Solar Blue </option>
-            <option value="#6787b7">Columbia</option>
-            <option value="#1d4f91">Royal   </option>
-            <option value="#001e62">Light Navy  </option>
-            <option value="#003057">Navy   </option>
-            <option value="#7d55c7">Light Purple  </option>
-            <option value="#BB29BB">Purple   </option>
-            <option value="#aaa9ad">Metallic Silver  </option>
-            <option value="#D4AF37">Metallic Gold  </option>
-    </select>
+        <label for="font-color">Choose a Font Color:</label>
+        <?php
+        $rows = get_field('colors', 6786); // 6786 is page id
+        if($rows)
+        {
+        	echo '<select id="font-color">';
+        	foreach($rows as $row)
+        	{
+        		$str_arr = explode (",", $row['options2']);?>
+    		<option value="<?php print_r($str_arr[0]) ?>"> <?php
+                print_r($str_arr[1]);
+        		echo '</option>';
+        	}
+        	echo '</select>';
+        } ?>
 	</div>
 	
 	
@@ -233,4 +212,5 @@ function mypreviewbuttn()
 {
     echo '<h3 style="font-size: 17px; text-transform: uppercase;">Preview: </h3><div class="preview-div"><p id="preview-p"><span id="fnames"></span><span id="lnames"></span><span id="mnames"></span></p></div>';
     
+
 }
