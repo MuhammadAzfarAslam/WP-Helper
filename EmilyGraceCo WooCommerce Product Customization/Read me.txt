@@ -9,3 +9,9 @@ All worked done in functions.php and JQUERY and CSS in footer.php . Both files a
 
 functions.php
 footer.php
+
+
+version 2:
+Preview popup deleted
+Preview now below
+

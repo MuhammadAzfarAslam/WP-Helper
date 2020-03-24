@@ -13,7 +13,7 @@ function my_funtion_sample() {
   global $product;
   $pid = $product->get_id();
     ?>
-
+    <br>
     <label for="more-cus">Do you want more Customization:</label>
 
         <select id="more-cus">
@@ -28,7 +28,7 @@ function my_funtion_sample() {
 
         <select id="fonts">
             <option value="">Choose A Font</option>
-            <option value="as-jiggy-roman">A&amp;S JIGGY ROMAN</option>
+            <option value="aj-jiggy-roman">A&amp;S JIGGY ROMAN</option>
             <option value="as-snapper-script">A&amp;S SNAPPER SCRIPT</option>
             <option value="as-graceland">A&amp;S GRACELAND</option>
             <option value="boingo">BOINGO</option>
@@ -94,7 +94,11 @@ function my_funtion_sample() {
         }
     
         echo '<form action="https://perfectwebsoldev.com/emilygraceco/custom-page/" method="GET" name="myform">';
-        echo '<label for="fname">First Initial: </label><input type="text" id="fname" name="fname">';
+        echo '<label for="fname" id="fname1">First Initial: </label><input type="text" id="fname" name="fname">';
+        echo '<label for="mname" id="mname1">Middle Initial: </label><input type="text" id="mname" name="mname">'; 
+        echo '<label for="lname" id="lname1">Last Initial: </label><input type="text" id="lname" name="lname">';
+        // echo '<h3>Preview: </h3><div class="preview-div"><p id="preview-p"></p></div>';
+        
 		if ($term->slug == 'pants'){
             echo '<label for="mname">Middle Initial: </label><input type="text" id="mname" name="mname">'; 
             //echo '<label for="lname">Last Initial: </label><input type="text" id="lname" name="lname">';
@@ -227,175 +231,6 @@ add_action( 'woocommerce_before_single_variation', 'mypreviewbuttn', 30 );
 
 function mypreviewbuttn()
 {
-
-   global $product;
-   $pid = $product->get_id();
-
-        //   echo '<form action="" method="GET" name="myform" id="myhiddenform">';
-        //   echo '<input type="hidden" id="fname1" name="fname">';
-
-        //   echo '<input type="hidden" id="mname1" name="mname">';
-
-        //   echo '<input type="hidden" id="lname1" name="lname">';
-        //   echo '<input type="hidden" name="pimg" value="'.$pid.'" >';
-        //   echo '<input type="hidden" name="v-id" value="" id="vid" >';
-        //   echo '<input type="hidden" name="dname" value="" id="did" >';
-        //   echo '<input type="hidden" name="cname" value="" id="cid" >';
-        //   echo '<input type="submit" name="submit" value="Preview"> <br/>';
-        //   echo '</form>';
-
-
-          ?>
-          
-          <!-- Modal HTML embedded directly into document -->
-
-          <?php   foreach( wp_get_post_terms( $pid, 'product_cat' ) as $term ){
-                    if( $term ){
-                        // If statement for Bags /////////////////////////// 
-                        if($term->slug == 'bags'){ ?>            
-
-            <div class="container mt-20 bags">
-                <div class="row">
-                    <div id="ex1" class="modal">
-                    <p>
-					   
-            <script type="text/javascript">				   
-                jQuery(document).ready(function(e) {
-                    $('#mypopup').click(function(){
-                            var imgsrc=$('.swiper-slide-active img').attr('src');
-                            $('#myimg').attr("src", imgsrc);
-                            
-                        // alert("Image Source Is :"+ imgsrc);
-                        });
-                    });
-					
-            </script>
-					   
-					   
-					   
-                        <div id="fname11"></div>
-                        <img src="" alt="Bags" id="myimg">
-                        <div id="productname"><?php echo $product->get_name(); ?></div>
-                        <!-- <div id="mname11"></div>
-                        <div id="lname11"></div> -->
-                        <div id="pimg"></div>
-                        <div id="pimg"></div>
-                        <div id="v-id11"></div>
-                        <div id="dname11"></div>
-                        <div id="cname11"></div>  
-                        <?php 
-                            foreach( wp_get_post_terms( $pid, 'product_cat' ) as $term ){
-                                if( $term ){
-                                    echo 'Category: ' .$term->name . '<br>'; // product category name
-                                }
-                            }
-                        ?>                  
-                    <a href="#"  rel="modal:close">Close</a>
-                    </div>
-                </div>
-            </div>
-      
-            <?php 
-                        }
-                    // Else IF statement for Mousepad ///////////////////////////
-                    elseif($term->slug == 'mouse-pads'){ ?> 
-                        <div class="container mt-20 mouse-pad">
-                        <div class="row">
-                            <div id="ex1" class="modal">
-                            <p>
-                               
-                    <script type="text/javascript">				   
-                        jQuery(document).ready(function(e) {
-                            $('#mypopup').click(function(){
-                                    var imgsrc=$('.swiper-slide-active img').attr('src');
-                                    $('#myimg').attr("src", imgsrc);
-                                    
-                                // alert("Image Source Is :"+ imgsrc);
-                                });
-                            });
-                    </script>
-                               
-                               
-                               
-                                <div id="fname11"></div> 
-                                <p>Mouse Pad Container</p>
-                                <img src="" alt="Mouse Pad" id="myimg">
-                                <div id="productname"><?php echo $product->get_name(); ?></div>
-                                <!-- <div id="mname11"></div>
-                                <div id="lname11"></div> -->
-                                <div id="pimg"></div>
-                                <div id="pimg"></div>
-                                <div id="v-id11"></div>
-                                <div id="dname11"></div>
-                                <div id="cname11"></div>  
-                                <?php 
-                                    foreach( wp_get_post_terms( $pid, 'product_cat' ) as $term ){
-                                        if( $term ){
-                                            echo 'Category: ' .$term->name . '<br>'; // product category name
-                                        }
-                                    }
-                                ?>                  
-                            <a href="#"  rel="modal:close">Close</a>
-                            </div>
-                        </div>
-                    </div>
-            <?php       }
-						
-					// Else IF statement for Pajamas & Robes ///////////////////////////
-                    elseif($term->slug == 'pajamas-robes'){ ?> 
-                        <div class="container mt-20 mouse-pad">
-                        <div class="row">
-                            <div id="ex1" class="modal">
-                            <p>
-                               
-                    <script type="text/javascript">				   
-                        jQuery(document).ready(function(e) {
-                            $('#mypopup').click(function(){
-                                    var imgsrc=$('.swiper-slide-active img').attr('src');
-                                    $('#myimg').attr("src", imgsrc);
-                                    
-                                // alert("Image Source Is :"+ imgsrc);
-                                });
-                            });
-                    </script>
-                               
-                               
-                               
-                                <div id="fname11"></div> 
-                                <p>Pajamas and Robes Container</p>
-                                <img src="" alt="Pajamas and Robes" id="myimg">
-                                <div id="productname"><?php echo $product->get_name(); ?></div>
-                                <!-- <div id="mname11"></div>
-                                <div id="lname11"></div> -->
-                                <div id="pimg"></div>
-                                <div id="pimg"></div>
-                                <div id="v-id11"></div>
-                                <div id="dname11"></div>
-                                <div id="cname11"></div>  
-                                <?php 
-                                    foreach( wp_get_post_terms( $pid, 'product_cat' ) as $term ){
-                                        if( $term ){
-                                            echo 'Category: ' .$term->name . '<br>'; // product category name
-                                        }
-                                    }
-                                ?>                  
-                            <a href="#"  rel="modal:close">Close</a>
-                            </div>
-                        </div>
-                    </div>
-            <?php       }	
-						
-                    // Else statement for Anonymous ///////////////////////////
-                    else{
-                        echo '<p>Hello World</p>';
-                    }
-                    }
-                }
-            ?>			
-
-            <!-- Link to open the modal -->
-            <p><a href="#ex1" id="mypopup" rel="modal:open">Preview</a></p>
-
-          <?php
-
+    echo '<h3 style="font-size: 17px; text-transform: uppercase;">Preview: </h3><div class="preview-div"><p id="preview-p"><span id="fnames"></span><span id="lnames"></span><span id="mnames"></span></p></div>';
+    
 }

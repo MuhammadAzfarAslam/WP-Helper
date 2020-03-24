@@ -79,53 +79,51 @@ if ( $page_id ) {
 
 <script type="text/javascript">
 
-jQuery(document).ready(function() {
- jQuery('#fname').on("change", function () {
- 
- var abc = jQuery("#fname").val().length;
+    jQuery(document).ready(function() {
+      jQuery('#fonts').each( function () {
+        jQuery(this).change( function ()  {
+          jQuery("#mname,#lname,#mname1,#lname1,#mname11,#lname11").css('display', 'block');
+            // if (jQuery(this).val()=="heartmid") {
+            //     //jQuery("#mname,#lname,#mname1,#lname1,#mname11,#lname11").css('display', 'block');
+            //     jQuery("#fname11").css('left', '47%');
+            //     jQuery("#fname11").css('top', '267px');
+            //     jQuery("#mname11").css('top', '267px');
+            //     jQuery("#lname11").css('top', '267px');
+            //   }
+            // else if (jQuery(this).val()=="circlemonogram") {
+            //     //jQuery("#mname,#lname,#mname1,#lname1,#mname11,#lname11").css('display', 'block');
+            //     jQuery("#mname11").css('top', '267px');
+            //     jQuery("#fname11").css('top', '264px');
+            //     jQuery("#lname11").css('top', '264px');
+            //     jQuery("#fname11").css('left', '47%');
+            //      }
+            // else {
+            //     jQuery("#mname,#lname,#mname1,#lname1,#mname11,#lname11").css('display', 'block');
+            //     jQuery("#fname11").css('left', '50%');
+            //     jQuery("#mname11").css('top', '267px');
+            //     jQuery("#fname11").css('top', '267px');
+            //     jQuery("#lname11").css('top', '267px');
+            // } 
+          }); 
+        });
+    });
 
-  if(abc == '3')
-  {
-  jQuery("#fname11").css('font-size', '28px');
-  jQuery("#fname11").css('top', '180px');
-  jQuery("#fname11").css('left', '50%');
-  jQuery("#fname11").css('transform', 'translate(-50%, -0%)');
-  }
-  else if(abc == '2')
-  {
-   jQuery("#fname11").css('font-size', '37px');
-  jQuery("#fname11").css('top', '175px');
-  jQuery("#fname11").css('left', '50%');
-  jQuery("#fname11").css('transform', 'translate(-50%, -0%)');
-  }
-  else
-  {
-   jQuery("#fname11").css('font-size', '47px');
-  jQuery("#fname11").css('top', '165px');
-  jQuery("#fname11").css('left', '50%');
-  jQuery("#fname11").css('transform', 'translate(-50%, -0%)');
-  }
-
-});
-});
-
+    // Mouse pad Styling
  
     jQuery(document).ready(function() {
         jQuery('#fonts').on("change", function () {
           var fieldvalinput= jQuery(this).val();
-          if(fieldvalinput ==  'frscript' || fieldvalinput == 'boingo' || fieldvalinput ==  'as-jiggy-roman')
+          if(fieldvalinput ==  'heartmid' || fieldvalinput == 'circlemonogram')
           {
-            jQuery('#fname,#mname,#lname').attr("maxlength", "3");
+              //jQuery('#fname,#mname,#lname').val("");
+              jQuery('#fname,#mname,#lname').attr("maxlength", "1");
           }
           else
             {
-              jQuery('#fname,#mname,#lname').val("");
-              jQuery('#fname,#mname,#lname').attr("maxlength", "3");
+              //jQuery('#fname,#mname,#lname').val("");
+              jQuery('#fname,#mname,#lname').attr("maxlength", "1");
             }
-          //alert(jQuery(this).val());
-            });
-        
-            
+        });           
     });
     
     jQuery(document).ready(function() {
@@ -144,26 +142,19 @@ jQuery(document).ready(function() {
                jQuery('.more-customization').hide();
 			  // jQuery('.single_add_to_cart_button').show();
             }
-          //alert(jQuery(this).val());
         }); 
     });
     
     jQuery(document).ready(function() {
           
          $('input.variation_id').change( function(){
-            if( '' != $('input.variation_id').val() ) {
-                
-               var var_id = $('input.variation_id').val();
-              
-				
-				$("#v-id").val(var_id);
-				$("#vid").val(var_id);
-                $("#v-id11").text(var_id);
-				//$("#v-id11").text(var_id);
-                
+            if( '' != $('input.variation_id').val() ) {  
+              var var_id = $('input.variation_id').val();     
+				      $("#v-id").val(var_id);
+				      $("#vid").val(var_id);
+              $("#v-id11").text(var_id);                
             }
-         });
-          
+         });  
       });
     
     
@@ -202,19 +193,31 @@ jQuery(document).ready(function() {
             });
     });
 	
-	
-	
-	
-	
-	
     jQuery(document).ready(function() {
-          jQuery('#fonts').on("change", function () {
+        jQuery('#fonts').each( function () {
+          jQuery(this).change( function () {
               var fieldvalinput2= jQuery(this).val();
               $("#did").val(fieldvalinput2); 
-			  $( "#hiddenfontname" ).val(fieldvalinput2);
-			  $( "#dname11" ).text(fieldvalinput2); 
-			  $( "#fname11" ).css('font-family',fieldvalinput2); 
-              
+              $( "#hiddenfontname" ).val(fieldvalinput2);
+              $( "#dname11" ).text(fieldvalinput2); 
+              //$( "#fname11" ).css('font-family',fieldvalinput2); 
+              if (fieldvalinput2 == 'heartmid'){
+                $( "#fnames" ).css('font-family','heart-left');
+                $( "#lnames" ).css('font-family','heartmid'); 
+                $( "#mnames" ).css('font-family','heart-right');  
+              }
+              else if (fieldvalinput2 == 'circlemonogram'){
+                $( "#fnames" ).css('font-family','circle-left');
+                $( "#lnames" ).css('font-family','circlemonogram'); 
+                $( "#mnames" ).css('font-family','circle-right');   
+              }
+              else{
+                //$( "#preview-p" ).css('font-family',fieldvalinput2);
+                $( "#fnames" ).css('font-family',fieldvalinput2);
+                $( "#mnames" ).css('font-family',fieldvalinput2); 
+                $( "#lnames" ).css('font-family',fieldvalinput2);
+              }
+        }); 
       }); 
     });
 
@@ -222,44 +225,41 @@ jQuery(document).ready(function() {
           jQuery('#font-color').on("change", function () {
               var fieldvalinput3= jQuery(this).val();
               $("#cid").val(fieldvalinput3); 
-			   $( "#hiddenfont-color" ).val(fieldvalinput3); 
-			   $( "#cname11" ).text(fieldvalinput3); 
-			   $( "#fname11" ).css('color',fieldvalinput3); 
-			   
-              
+              $( "#hiddenfont-color" ).val(fieldvalinput3); 
+              //$( "#cname11" ).text(fieldvalinput3); 
+              $( "#preview-p" ).css('color',fieldvalinput3);
+              //$( "#mname11" ).css('color',fieldvalinput3); 
+              //$( "#lname11" ).css('color',fieldvalinput3);       
       }); 
     });
 	
 	
 	jQuery(document).ready(function() {
           jQuery('#fname').on("change", function () {
-              var fieldvalinput4= jQuery(this).val(); 
-			   $( "#hiddenfname" ).val(fieldvalinput4); 
-			   $( "#fname1" ).val(fieldvalinput4);
-			   $( "#fname11" ).text(fieldvalinput4); 
-              
+            var fieldvalinput4= jQuery(this).val(); 
+            $( "#hiddenfname" ).val(fieldvalinput4); 
+            $( "#fname1" ).val(fieldvalinput4);
+            $( "#fname11" ).text(fieldvalinput4);    
       }); 
     });
 	
 	
 	jQuery(document).ready(function() {
           jQuery('#mname').on("change", function () {
-              var fieldvalinput5= jQuery(this).val(); 
-			   $( "#hiddenmname" ).val(fieldvalinput5); 
-			    $( "#mname1" ).val(fieldvalinput5);
-				 $( "#mname11" ).text(fieldvalinput5); 
-              
+            var fieldvalinput5= jQuery(this).val(); 
+            $( "#hiddenmname" ).val(fieldvalinput5); 
+			      $( "#mname1" ).val(fieldvalinput5);
+				    $( "#mname11" ).text(fieldvalinput5);              
       }); 
     });
 	
 	
 	jQuery(document).ready(function() {
           jQuery('#lname').on("change", function () {
-              var fieldvalinput6= jQuery(this).val(); 
-			   $( "#hiddenlname" ).val(fieldvalinput6); 
-			   $( "#lname1" ).val(fieldvalinput6); 
-			    $( "#lname11" ).text(fieldvalinput6); 
-              
+            var fieldvalinput6= jQuery(this).val(); 
+			      $( "#hiddenlname" ).val(fieldvalinput6); 
+			      $( "#lname1" ).val(fieldvalinput6); 
+			      $( "#lname11" ).text(fieldvalinput6);   
       }); 
     });
 
@@ -270,6 +270,53 @@ jQuery(document).ready(function() {
       }) 
     });
 
+
+    $(document).ready(function(){
+      //jQuery('input').each( function () {
+        $("input").change(function(){
+          var inputVal1 = document.getElementById("fname").value;
+          var inputVal2 = document.getElementById("mname").value;
+          var inputVal3 = document.getElementById("lname").value;
+          $("#fnames").empty();
+          $("#lnames").empty();
+          $("#mnames").empty();
+          $("#fnames").append(inputVal1);
+          $("#lnames").append(inputVal3);
+          $("#mnames").append(inputVal2);
+          
+          //alert(inputVal1);
+        });
+      //});  
+    });
+
+
+    jQuery(document).ready(function() {
+        jQuery('#fonts').each( function () {
+          jQuery(this).change( function () {
+              var fieldvalinput5= jQuery(this).val(); 
+              if (fieldvalinput5 == 'as-snapper-script' || fieldvalinput5 == 'as-graceland'){
+                $( "#preview-p" ).css('font-size','45px'); 
+              }
+              else if (fieldvalinput5 == 'aj-jiggy-roman' || fieldvalinput5 == 'nebraskb'){
+                $( "#preview-p" ).css('font-size','55px'); 
+              }
+              else if (fieldvalinput5 == 'boingo' || fieldvalinput5 == 'frscript'){
+                $( "#preview-p" ).css('font-size','70px'); 
+              }
+              else if (fieldvalinput5 == 'vinemonogram'){
+                $( "#preview-p" ).css('font-size','80px'); 
+              }
+              else if (fieldvalinput5 == 'interlockingvine' || fieldvalinput5 == 'vinesplit'){
+                $( "#preview-p" ).css('font-size','90px'); 
+              }
+              else{
+                $( "#preview-p" ).css('font-size','150px');
+              }
+        }); 
+      }); 
+    });
+
+    
 
 
 </script>
